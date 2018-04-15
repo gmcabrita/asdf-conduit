@@ -24,7 +24,9 @@ before_script:
   - . asdf/asdf.sh
 script:
   - shellcheck bin/*
-  - asdf plugin-test conduit https://github.com/gmcabrita/asdf-conduit.git
+  - asdf plugin-add conduit .
+  - asdf list-all conduit
+  - asdf plugin-test conduit .
 after_success:
   - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
