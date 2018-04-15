@@ -3,8 +3,13 @@ set -e
 set -o pipefail
 
 install_conduit() {
-    local version, install_path, bin_install_path, binary_path;
-    local tmp_download_dir, download_url, download_path;
+    local version \
+        install_path \
+        bin_install_path \
+        binary_path \
+        tmp_download_dir \
+        download_url \
+        download_path;
 
     version=$2;
     install_path=$3;
@@ -39,7 +44,8 @@ get_arch() {
 }
 
 get_filename() {
-    local version, platform;
+    local version \
+        platform;
 
     version=$1;
     platform="$(get_arch)";
@@ -52,7 +58,8 @@ get_filename() {
 }
 
 get_download_url() {
-    local filename, version;
+    local filename \
+        version;
 
     version=$1;
     filename=$(get_filename "${version}");
