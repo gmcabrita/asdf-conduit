@@ -14,5 +14,8 @@ function sort_versions() {
 }
 
 # Fetch all tag names, and get only second column. Then remove all unnecessary characters.
-mapfile -t versions < <(eval "$cmd" | grep -oE "tag_name\": \".{1,15}\"," | sed 's/tag_name\": \"v//;s/\",//' | sort_versions);
+list_of_versions=$(eval "$cmd" | grep -oE "tag_name\": \".{1,15}\"," | sed 's/tag_name\": \"v//;s/\",//' | sort_versions);
+for version in $list_of_versions; do
+    versions+=("$version");
+done
 echo "${versions[@]}";
