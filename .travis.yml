@@ -1,0 +1,17 @@
+language: c
+sudo: false
+addons:
+  apt:
+    packages:
+      - shellcheck
+script:
+  - shellcheck bin/*
+  - asdf plugin-test conduit https://github.com/gmcabrita/asdf-conduit.git
+matrix:
+  - fast_finish: true
+before_script:
+  - git clone https://github.com/asdf-vm/asdf.git
+  - . asdf/asdf.sh
+os:
+  - linux
+  - osx
