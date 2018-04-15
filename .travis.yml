@@ -30,7 +30,7 @@ script:
   - latest_version=$(asdf list-all conduit | tail -n1)
   - asdf install conduit "$latest_version"
   - asdf global conduit "$latest_version"
-  - conduit --version
+  - conduit help
 after_success:
   - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
